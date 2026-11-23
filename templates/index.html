@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f5">
+  <meta name="description" content="Explore iris flower species with an interactive machine learning classifier.">
+  <title>Iris Studio — Discover the flower in your data</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Iris Studio home"><span class="brand-symbol" aria-hidden="true">✳</span><span>iris<span class="brand-light">studio</span><small>FLOWER INTELLIGENCE</small></span></a>
+      <nav aria-label="Main navigation"><a class="active" aria-current="page" href="/">Predictor</a><a href="/about">About</a><a href="/profile">Profile</a></nav>
+      <a href="#workspace" class="top-cta">Explore the model <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> THE ART OF FLOWER CLASSIFICATION <span class="eyebrow-line"></span> ML EXPERIENCE</div>
+          <h1 id="hero-title">Nature is full of <em>patterns.</em><br>Let's find yours<span class="accent-period">.</span></h1>
+          <p>Four tiny measurements. Three beautiful species. Discover how machine learning turns the details of a flower into a fascinating prediction.</p>
+          <div class="hero-bottom"><a class="hero-link" href="#workspace">Start exploring <span aria-hidden="true">↗</span></a><span class="hero-note"><span class="sparkle">✧</span> No account needed · Instant predictions</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Illustration of three iris flowers">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <svg viewBox="0 0 580 335" role="img" aria-label="Three stylized iris flowers" class="flower-art">
+            <defs>
+              <linearGradient id="stem" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6c9b70"/><stop offset="1" stop-color="#2d5c42"/></linearGradient>
+              <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6a8ea"/><stop offset="1" stop-color="#6a5bb8"/></linearGradient>
+              <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ded1f3"/><stop offset="1" stop-color="#9384c3"/></linearGradient>
+              <linearGradient id="lavender" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eee0f8"/><stop offset="1" stop-color="#b79bd0"/></linearGradient>
+            </defs>
+            <g transform="translate(95 130) rotate(-15)"><path d="M0 28 Q12 122 -10 225" fill="none" stroke="url(#stem)" stroke-width="6" stroke-linecap="round"/><path d="M-4 130 Q-80 65 -81 123 Q-49 155 -4 155" fill="#6c9b70"/><g fill="url(#lavender)"><ellipse cx="0" cy="-29" rx="26" ry="65" transform="rotate(0)"/><ellipse cx="0" cy="-29" rx="26" ry="65" transform="rotate(72)"/><ellipse cx="0" cy="-29" rx="26" ry="65" transform="rotate(144)"/><ellipse cx="0" cy="-29" rx="26" ry="65" transform="rotate(216)"/><ellipse cx="0" cy="-29" rx="26" ry="65" transform="rotate(288)"/></g><circle cy="-5" r="15" fill="#f9d48d"/><circle cy="-5" r="7" fill="#e2a955"/></g>
+            <g transform="translate(305 105)"><path d="M0 28 Q-16 133 15 264" fill="none" stroke="url(#stem)" stroke-width="7" stroke-linecap="round"/><path d="M0 145 Q80 61 91 110 Q68 159 4 171" fill="#5d9066"/><g fill="url(#purple)"><ellipse cy="-42" rx="36" ry="86"/><ellipse cy="-42" rx="36" ry="86" transform="rotate(60)"/><ellipse cy="-42" rx="36" ry="86" transform="rotate(120)"/><ellipse cy="-42" rx="36" ry="86" transform="rotate(180)"/><ellipse cy="-42" rx="36" ry="86" transform="rotate(240)"/><ellipse cy="-42" rx="36" ry="86" transform="rotate(300)"/></g><g fill="none" stroke="#ede0fa" stroke-width="1.8" opacity=".65"><path d="M0 -8 L0 -97"/><path d="M0 -8 L81 -50"/><path d="M0 -8 L-81 -50"/></g><circle cy="-8" r="20" fill="#f8d68d"/><circle cy="-8" r="10" fill="#d99c53"/></g>
+            <g transform="translate(475 154) rotate(14)"><path d="M0 24 Q-18 112 4 195" fill="none" stroke="url(#stem)" stroke-width="6" stroke-linecap="round"/><path d="M-7 115 Q-87 70 -72 127 Q-43 152 -1 146" fill="#6f9d77"/><g fill="url(#violet)"><ellipse cy="-31" rx="27" ry="65"/><ellipse cy="-31" rx="27" ry="65" transform="rotate(72)"/><ellipse cy="-31" rx="27" ry="65" transform="rotate(144)"/><ellipse cy="-31" rx="27" ry="65" transform="rotate(216)"/><ellipse cy="-31" rx="27" ry="65" transform="rotate(288)"/></g><circle cy="-6" r="15" fill="#f8d78f"/><circle cy="-6" r="7" fill="#dfa75f"/></g>
+          </svg>
+          <span class="floating-label fl-one">Iris setosa <span>✦</span></span><span class="floating-label fl-two">Iris versicolor <span>✦</span></span><span class="floating-label fl-three">Iris virginica <span>✦</span></span>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace" aria-label="Interactive Iris prediction tool">
+        <div class="workspace-heading"><div><span class="section-kicker">THE INTERACTIVE LAB <span> / 01</span></span><h2>Explore your <em>iris.</em></h2><p>Fine-tune the dimensions, watch your flower data evolve, and discover its species.</p></div><div class="model-status"><span class="status-dot"></span> MODEL-POWERED CLASSIFICATION</div></div>
+        <div class="lab-grid">
+          <section class="panel input-panel" aria-labelledby="measurement-heading">
+            <div class="panel-header"><div><span class="panel-overline">STEP 01 · INPUT</span><h3 id="measurement-heading">Flower measurements</h3></div><span class="panel-icon">↗</span></div>
+            <p class="panel-description">Adjust each slider or type a precise value. All measurements are in centimetres (cm).</p>
+            <form id="prediction-form" action="/predict" method="post" novalidate>
+              <div class="measurement-list">
+                <div class="measurement"><div class="measurement-top"><label for="sepal_length">Sepal length <small>↗</small></label><div class="number-wrap"><input id="sepal_length" name="sepal_length" type="number" inputmode="decimal" min="0.1" max="15" step="0.1" value="5.1" required aria-describedby="sepal_length_help"><span>cm</span></div></div><input class="range-input" id="sepal_length_range" type="range" min="0.1" max="15" step="0.1" value="5.1" aria-label="Sepal length slider"><div class="range-foot"><span>0.1 cm</span><span id="sepal_length_help">15 cm</span></div></div>
+                <div class="measurement"><div class="measurement-top"><label for="sepal_width">Sepal width <small>↗</small></label><div class="number-wrap"><input id="sepal_width" name="sepal_width" type="number" inputmode="decimal" min="0.1" max="15" step="0.1" value="3.5" required aria-describedby="sepal_width_help"><span>cm</span></div></div><input class="range-input" id="sepal_width_range" type="range" min="0.1" max="15" step="0.1" value="3.5" aria-label="Sepal width slider"><div class="range-foot"><span>0.1 cm</span><span id="sepal_width_help">15 cm</span></div></div>
+                <div class="measurement"><div class="measurement-top"><label for="petal_length">Petal length <small>↗</small></label><div class="number-wrap"><input id="petal_length" name="petal_length" type="number" inputmode="decimal" min="0.1" max="15" step="0.1" value="1.4" required aria-describedby="petal_length_help"><span>cm</span></div></div><input class="range-input" id="petal_length_range" type="range" min="0.1" max="15" step="0.1" value="1.4" aria-label="Petal length slider"><div class="range-foot"><span>0.1 cm</span><span id="petal_length_help">15 cm</span></div></div>
+                <div class="measurement"><div class="measurement-top"><label for="petal_width">Petal width <small>↗</small></label><div class="number-wrap"><input id="petal_width" name="petal_width" type="number" inputmode="decimal" min="0.1" max="15" step="0.1" value="0.2" required aria-describedby="petal_width_help"><span>cm</span></div></div><input class="range-input" id="petal_width_range" type="range" min="0.1" max="15" step="0.1" value="0.2" aria-label="Petal width slider"><div class="range-foot"><span>0.1 cm</span><span id="petal_width_help">15 cm</span></div></div>
+              </div>
+              <div class="preset-box"><div class="preset-title">TRY AN EXAMPLE <span>QUICK START ↘</span></div><div class="preset-buttons" role="group" aria-label="Flower example presets"><button type="button" class="preset active" data-preset="setosa">✳ Setosa</button><button type="button" class="preset" data-preset="versicolor">✳ Versicolor</button><button type="button" class="preset" data-preset="virginica">✳ Virginica</button></div></div>
+              <div id="form-error" class="error-message" role="alert" {% if not form_error %}hidden{% endif %}>{{ form_error or '' }}</div>
+              <button id="predict-button" type="submit" class="primary-btn"><span id="button-text">Identify this flower</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+              <div class="form-bottom"><span>✧ Powered by your trained ML model</span><button type="button" id="reset-button" class="reset-link">↺ Reset values</button></div>
+            </form>
+          </section>
+
+          <div class="right-stack">
+            <section class="panel preview-panel" aria-labelledby="preview-heading">
+              <div class="panel-header"><div><span class="panel-overline">LIVE PREVIEW · REAL-TIME</span><h3 id="preview-heading">Your flower, visualized</h3></div><div class="live-pill"><span class="status-dot"></span> LIVE</div></div>
+              <div class="preview-stage"><div class="preview-grid"></div><svg id="dynamic-flower" viewBox="0 0 320 240" role="img" aria-label="Stylized flower diagram that changes as measurements change"><defs><linearGradient id="petal-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5b8ec"/><stop offset="1" stop-color="#8376ba"/></linearGradient></defs><g transform="translate(160 116)"><g id="sepal-group" fill="#8db59b" opacity=".9"><ellipse cx="0" cy="-32" rx="24" ry="68"/><ellipse cx="0" cy="-32" rx="24" ry="68" transform="rotate(90)"/><ellipse cx="0" cy="-32" rx="24" ry="68" transform="rotate(180)"/><ellipse cx="0" cy="-32" rx="24" ry="68" transform="rotate(270)"/></g><g id="petal-group" fill="url(#petal-gradient)" stroke="#fff" stroke-opacity=".3" stroke-width="1"><ellipse cx="0" cy="-29" rx="20" ry="60"/><ellipse cx="0" cy="-29" rx="20" ry="60" transform="rotate(60)"/><ellipse cx="0" cy="-29" rx="20" ry="60" transform="rotate(120)"/><ellipse cx="0" cy="-29" rx="20" ry="60" transform="rotate(180)"/><ellipse cx="0" cy="-29" rx="20" ry="60" transform="rotate(240)"/><ellipse cx="0" cy="-29" rx="20" ry="60" transform="rotate(300)"/></g><circle r="17" fill="#f7d694"/><circle r="8" fill="#e6ac60"/></g></svg><span class="preview-caption">ILLUSTRATIVE SHAPE · NOT A BOTANICAL RECONSTRUCTION</span></div>
+              <div class="size-summary"><div><span>SEPAL RATIO</span><strong id="sepal-ratio">1.46×</strong></div><div><span>PETAL RATIO</span><strong id="petal-ratio">7.00×</strong></div><div><span>TOTAL LENGTH</span><strong id="total-length">6.5 cm</strong></div></div>
+            </section>
+            <section class="panel result-panel" id="result-panel" aria-labelledby="result-heading">
+              <div class="panel-header"><div><span class="panel-overline">STEP 02 · DISCOVER</span><h3 id="result-heading">Prediction result</h3></div><span class="panel-icon">✧</span></div>
+              <div id="result-empty" class="result-empty"><span class="empty-glyph">✳</span><strong>A discovery awaits.</strong><p>Enter your flower's measurements, then select “Identify this flower” to reveal its predicted species.</p></div>
+              <div id="result-content" class="result-content" hidden aria-live="polite"><div class="result-tag">✦ CLASSIFICATION COMPLETE</div><div class="result-identity"><span class="result-medallion">✳</span><div><span class="result-caption">YOUR FLOWER IS MOST LIKELY</span><h4 id="species-result">Iris setosa</h4></div></div><p id="species-description" class="species-description"></p><div id="probability-section" hidden><div class="prob-heading">MODEL PROBABILITIES <span>CLASS DISTRIBUTION</span></div><div id="probability-bars" class="probability-bars"></div><p class="probability-footnote">Model scores are not guarantees of correctness.</p></div><button type="button" class="share-button" id="copy-button">Copy prediction summary <span aria-hidden="true">↗</span></button></div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <section class="learn-section" aria-label="How the iris predictor works"><span class="section-kicker">A SIMPLE SCIENCE <span> / 02</span></span><div class="learn-grid"><div><h2>Small details.<br><em>Big discoveries.</em></h2><p>A classic dataset, four measurements, and a trained model. That's the magic behind Iris Studio.</p></div><div class="learn-step"><span>01 / MEASURE</span><strong>Observe</strong><p>Measure the sepal and petal dimensions in centimetres.</p></div><div class="learn-step"><span>02 / ANALYZE</span><strong>Predict</strong><p>Your input is evaluated by the trained classification model.</p></div><div class="learn-step"><span>03 / DISCOVER</span><strong>Understand</strong><p>Explore the predicted species and available model scores.</p></div></div></section>
+    </main>
+    <footer><div class="footer-brand">✳ iris<span>studio</span></div><span>Where botany meets machine learning.</span><span>Made to explore · 2026</span></footer>
+  </div>
+  <script id="initial-data" type="application/json">{{ {'result': initial_result|default(none), 'values': initial_values|default(none)} | tojson }}</script>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
